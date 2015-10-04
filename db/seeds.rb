@@ -6,63 +6,56 @@ Sed tellus justo, accumsan consequat purus faucibus, lacinia sodales tellus. Fus
 Maecenas a risus placerat, faucibus leo in, commodo metus. Ut vehicula nunc eget ipsum hendrerit, at tincidunt enim pellentesque. Curabitur scelerisque malesuada neque sit amet placerat. Pellentesque nec euismod magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ipsum turpis, cursus sit amet nulla quis, mattis mollis urna. Curabitur lobortis sagittis ante vitae condimentum.
 Pellentesque mauris lorem, vestibulum vel cursus eu, blandit in libero. Maecenas placerat nibh mauris, eget convallis sapien vehicula tristique. Maecenas sagittis commodo nulla, et volutpat sapien accumsan ac. Nulla porttitor quam aliquam, euismod odio suscipit, tristique purus. Nullam imperdiet laoreet erat, id fermentum enim feugiat quis. Vivamus semper varius massa vitae mollis. Ut sollicitudin, enim efficitur tempor interdum, tellus eros elementum lacus, et semper metus libero id sem. Phasellus vestibulum ligula eu augue dignissim, efficitur ullamcorper turpis ultricies. Vivamus rhoncus porttitor mauris ut suscipit. Sed in dui nulla. Vivamus scelerisque odio vitae magna dignissim dignissim. Morbi ut nunc eget lectus faucibus dictum eu ac tortor."
 
+first_names = %w(Jill Mike John Steven Price Walter)
+last_names = %w(Brown Red White Snow Green Black)
+
 TEXT_LENGTH = TEXT.length
 
 def some_text(max_value)
-  start_position = rand(TEXT_LENGTH)
-  end_position = rand(start_position..(start_position + max_value))
+  start_position = rand(TEXT_LENGTH / 2)
+  end_position = rand((start_position + 1)..(start_position + max_value))
   TEXT[start_position...end_position]
+end
+
+def email(first_name, last_name)
+  "#{first_name.downcase}.#{last_name.downcase}@example.com"
 end
 
 p 'Seeding users'
 
 BaseResource.user_uid = 'dummy'
 
-admin = User.create! first_name: 'admin',
+User.create! first_name: 'admin',
   last_name: 'admin',
   email: 'admin@example.com',
   password: 'password',
   password_confirmation: 'password',
   role: 'admin'
 
-user1 = User.create! first_name: 'Jill',
-  last_name: 'Red',
-  email: 'j.red@example.com',
-  password: 'password',
-  password_confirmation: 'password',
-  role: 'user'
-
-user2 = User.create! first_name: 'Mike',
-  last_name: 'Blue',
-  email: 'm.white@example.com',
-  password: 'password',
-  password_confirmation: 'password',
-  role: 'user'
-
-user3 = User.create! first_name: 'Steven',
-  last_name: 'Green',
-  email: 's.green@example.com',
-  password: 'password',
-  password_confirmation: 'password',
-  role: 'user'
-
-p 'Seeding posts'
-
-posts = [ admin, user1, user2, user3 ].map do |user|
-  BaseResource.user_uid = user.uid
-  5.times.map do
-    Post.create(title: some_text(255), content: some_text(5000), user_uid: user.uid)
+users = first_names.map do |first_name|
+  last_names.map do |last_name|
+    User.create! first_name: first_name,
+      last_name: last_name,
+      email: email(first_name, last_name),
+      password: 'password',
+      password_confirmation: 'password',
+      role: 'user'
   end
 end.flatten
 
+p 'Seeding posts'
+
+posts = users.map do |user|
+  BaseResource.user_uid = user.uid
+  Post.create(title: some_text(255), content: some_text(5000), user_uid: user.uid)
+end
+
 p 'Seeding comments'
 
-[ admin, user1, user2, user3 ].each do |user|
+users.each do |user|
   BaseResource.user_uid = user.uid
   posts.each do |post|
-    2.times do
-      Comment.create(content: some_text(255), user_uid: user.uid, post_id: post.id)
-    end
+    Comment.create(content: some_text(255), user_uid: user.uid, post_id: post.id)
   end
 end
 

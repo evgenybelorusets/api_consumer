@@ -47,6 +47,7 @@ class Comments
     Modal.delegate '.new-comment-form', 'ajax:success', (event, data)=>
       @comments.append(data)
       Modal.close()
+      $('html, body').animate({scrollTop: $(document).height()}, 'slow')
 
     Modal.delegate '.new-comment-form', 'ajax:error', (event)=>
       Modal.close()
@@ -59,5 +60,5 @@ class Comments
     url = $comments.data('comments-url')
     $.ajax url: url, error: @displayErrorMessage, success: (data) -> $comments.html(data)
 
-$(document).on 'page:change', ->
+$ ->
   new Comments
