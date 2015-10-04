@@ -1,0 +1,19 @@
+.well
+  %table.table
+    %thead
+      %td= 'ID'
+      %td= 'UID'
+      %td= 'First name'
+      %td= 'Last name'
+      %td= 'Email'
+      %td= 'Actions'
+    - users.each do |user|
+      %tr
+        %td= user.id
+        %td= user.uid
+        %td= user.first_name
+        %td= user.last_name
+        %td= user.email
+        %td
+          = edit_user_link(user)
+          = destroy_user_link(user)

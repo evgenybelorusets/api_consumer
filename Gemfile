@@ -12,7 +12,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+gem 'decent_exposure'
 gem 'cancan'
+gem 'activeresource'
+gem 'haml-rails'
+gem 'simple_form'
+gem "config"
 
 group :development, :test do
   gem 'byebug'

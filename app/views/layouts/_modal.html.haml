@@ -1,0 +1,8 @@
+.modal#generic-modal{ tabindex: "-1", role: "dialog", aria: { labelledby: "genericModalLabel" } }
+  .modal-dialog{ role: "document" }
+    .modal-content
+      .modal-header
+        %button.close{ type: 'button', data: { dismiss: "modal" }, aria: { label: "Close" } }
+          &times;
+        %h4.modal-title#genericModalLabel
+      .modal-body

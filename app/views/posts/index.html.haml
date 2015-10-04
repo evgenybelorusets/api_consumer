@@ -1,0 +1,14 @@
+.well
+  %table.table
+    %thead
+      %td= 'Autor'
+      %td= 'Title'
+      %td= 'Actions'
+    - posts.each do |post|
+      %tr
+        %td= post.full_name
+        %td= truncate(post.title, length: 50)
+        %td
+          = post_link(post)
+          = edit_post_link(post)
+          = destroy_post_link(post)

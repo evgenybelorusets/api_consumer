@@ -8,7 +8,15 @@
 </head>
 <body>
 
-<%= yield %>
+<%= render 'layouts/navbar' %>
+
+<div class="container">
+  <div class="row">
+    <span class="span12"><%= yield %></span>
+  </div>
+</div>
+
+<%= render 'layouts/modal' %>
 
 </body>
 </html>

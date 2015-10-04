@@ -1,0 +1,19 @@
+#post_content {
+  height: 400px;
+}
+
+span.author {
+  float: right;
+}
+
+.well.post-title, .well.post-content, .well.comment-content {
+  background-color: rgba(199, 199, 199, 0.07);
+}
+
+#spinner-container,  .header {
+  text-align: center;
+}
+
+.comment-controls {
+  margin-top: 10px;
+}

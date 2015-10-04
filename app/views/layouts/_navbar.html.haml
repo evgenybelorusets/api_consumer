@@ -1,0 +1,16 @@
+- unless devise_controller?
+  %nav.navbar.navbar-default{ role:'navigation' }
+    .container-fluid
+      %ul.nav.navbar-nav
+        = nav_users_link
+        %li.dropdown
+          %a{ href: '#', class: "dropdown-toggle", role: "button", aria: { haspopup: "true", expanded: "false" }, data: { toggle: "dropdown" } }
+            = 'Posts'
+            %span.caret
+          %ul.dropdown-menu
+            = nav_posts_link
+            %li.divider{ role: "separator" }
+            = nav_new_post_link
+        = nav_profile_link
+      %ul.nav.navbar-nav.navbar-right
+        = nav_sign_in_or_out_link
