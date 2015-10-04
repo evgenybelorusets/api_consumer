@@ -12,7 +12,7 @@ describe ApplicationController do
 
     it 'should set current user uid as prefix to resources' do
       allow(subject).to receive(:current_user).and_return user
-      expect(BaseResource).to receive(:uid=).with 'qwe'
+      expect(BaseResource).to receive(:user_uid=).with 'qwe'
       subject.send :set_user_uid
     end
   end
