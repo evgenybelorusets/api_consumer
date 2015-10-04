@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   helper_method :post
 
   def posts
-    @posts ||= Post.find(:all)
+    @posts ||= KaminariResourceCollection.new Post.find(:all, params: params)
   end
   helper_method :posts
 end

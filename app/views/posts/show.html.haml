@@ -1,15 +1,14 @@
+.header
+  %h2=post.title
 #post.well
-  .header
-    %h2='Post'
-  .well.post-title= post.title
-  .well.post-content= post.content
-  %div
+  .post-content= post.content
+  %div.post-controls
     = new_comment_link
     = edit_post_link(post)
     = destroy_post_link(post)
     %span.author
       = post.full_name
 
-#comments.well{ data: { comments_url: post_comments_path(post) } }
+#comments{ data: { comments_url: post_comments_path(post) } }
   #spinner-container
     .large.spinner

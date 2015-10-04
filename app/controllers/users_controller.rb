@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   helper_method :user
 
   def users
-    @users ||= User.with_external
+    @users ||= User.page(params[:page])
   end
   helper_method :users
 end

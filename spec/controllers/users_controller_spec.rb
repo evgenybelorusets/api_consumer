@@ -105,8 +105,9 @@ RSpec.describe UsersController do
   end
 
   describe '#users' do
-    it 'should return all users with external' do
-      allow(User).to receive(:with_external).and_return [ user ]
+    it 'should return all users paged' do
+      allow(subject).to receive(:params).and_return(page: 2)
+      allow(User).to receive(:page).with(2).and_return [ user ]
       expect(subject.send :users).to eql [ user ]
     end
   end

@@ -1,4 +1,6 @@
 class Post < BaseResource
+  add_response_method :http_response
+
   schema do
     integer :id
     integer :user_id

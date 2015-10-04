@@ -22,15 +22,10 @@ class User < ActiveRecord::Base
   delegate :first_name, :last_name, :role, :first_name=, :last_name=, :role=, to: :external_user
   delegate :id, to: :external_user, prefix: true
 
-  class << self
-    def with_external
-      external_users = ExternalUser.find(:all).index_by(&:uid)
-      users = User.where(uid: external_users.keys)
-      users.each do |user|
-        user.external_user = external_users[user.uid]
-      end
-    end
+  paginates_per 10
 
+
+  class << self
     def guest
       User.new uid: GUEST_UID, role: ROLES[:guest]
     end

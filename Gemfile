@@ -17,6 +17,8 @@ gem 'activeresource'
 gem 'haml-rails'
 gem 'simple_form'
 gem "config"
+gem "activeresource-response"
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

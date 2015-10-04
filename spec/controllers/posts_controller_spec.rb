@@ -154,9 +154,15 @@ RSpec.describe PostsController do
   end
 
   describe '#posts' do
-    it 'should return all posts' do
-      allow(Post).to receive(:find).with(:all).and_return [ pst ]
-      expect(subject.send :posts).to eql [ pst ]
+    let(:params) { double :params }
+    let(:posts) { double :posts }
+    let(:wrapped_posts) { double :wrapped_posts }
+
+    it 'should return all posts wrapped in kaminari collection' do
+      allow(subject).to receive(:params).and_return params
+      allow(Post).to receive(:find).with(:all, params: params).and_return posts
+      allow(KaminariResourceCollection).to receive(:new).with(posts).and_return wrapped_posts
+      expect(subject.send :posts).to eql wrapped_posts
     end
   end
 end
