@@ -56,7 +56,6 @@ GEM
     config (1.0.0)
       activesupport (>= 3.0)
       deep_merge (~> 1.0.0)
-    decent_exposure (2.3.2)
     deep_merge (1.0.1)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -208,7 +207,6 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.1.0)
   config
-  decent_exposure
   devise
   devise-bootstrap-views
   factory_girl_rails (~> 4.0)
