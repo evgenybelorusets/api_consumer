@@ -1,28 +1,13 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Rails version >= 4.2.4
 
-Things you may want to cover:
+* Ruby version >= 2.1.6
 
-* Ruby version
+* System dependencies: mysql
 
-* System dependencies
+* Configuration: check database.yml.example and settings.yml.example
 
-* Configuration
+* Database creation and seeds: bundle exec API_KEY='key' API_PASSWORD='password' rake db:setup. Key and password obtained through registration in api_provider app.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Specs: bundle exec rspec spec/
