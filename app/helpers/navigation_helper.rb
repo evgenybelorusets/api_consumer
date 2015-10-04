@@ -5,6 +5,12 @@ module NavigationHelper
     end
   end
 
+  def nav_my_posts_link
+    if signed_in?
+      content_tag :li, link_to('My posts', posts_path(user_id: current_user.external_user_id), class: 'btn nav-btn')
+    end
+  end
+
   def nav_new_post_link
     if can? :create, Post
       content_tag :li, link_to('New post', new_post_path, class: 'btn nav-btn')
