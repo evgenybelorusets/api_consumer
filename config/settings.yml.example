@@ -3,6 +3,6 @@ mailer:
   port: 4000
 
 api:
-  site: "http://localhost:3000/api/v1"
+  site: "http://localhost:3000/api/v1/:user_uid"
   user: <%= ENV["API_USER"] %>
   password: <%= ENV["API_PASSWORD"] %>
