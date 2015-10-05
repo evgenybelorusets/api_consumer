@@ -4,12 +4,13 @@
 .well
   %table.table
     %thead
-      %td= 'ID'
-      %td= 'UID'
-      %td= 'First name'
-      %td= 'Last name'
-      %td= 'Email'
-      %td= 'Actions'
+      %td= t('user.header.id')
+      %td= t('user.header.uid')
+      %td= t('user.header.first_name')
+      %td= t('user.header.last_name')
+      %td= t('user.header.email')
+      %td= t('user.header.role')
+      %td= t('user.header.actions')
     - users.each do |user|
       %tr
         %td= user.id
@@ -17,6 +18,7 @@
         %td= user.first_name
         %td= user.last_name
         %td= user.email
+        %td= t("user.roles.#{user.role}")
         %td
           = edit_user_link(user)
           = destroy_user_link(user)

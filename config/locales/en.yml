@@ -20,4 +20,83 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  login:
+    sign_up: 'Sign up'
+    sign_in: 'Sign in'
+    sign_out: 'Sign out'
+    remember_me: 'Remember me'
+  common:
+    delete_confirmation: 'Are you sure?'
+    cancel: 'Cancel'
+    warning: 'Warning'
+    create: 'Create'
+    update: 'Update'
+    close: 'Close'
+    back: 'Back'
+    delete: 'Delete'
+  post:
+    button:
+      show: 'View post'
+      edit: 'Edit post'
+      destroy: 'Delete post'
+      index: 'All posts'
+      my: 'My posts'
+      new: 'New post'
+    fields:
+      title: 'Title'
+      content: 'Content'
+    header:
+      author: 'Author'
+      title: 'Title'
+      actions: 'Actions'
+  user:
+    button:
+      edit: 'Edit user'
+      destroy: 'Delete user'
+      index: 'Users'
+      show: 'Profile'
+    roles:
+      user: 'User'
+      admin: 'Admin'
+    fields:
+      email: 'Email'
+      first_name: 'First name'
+      last_name: 'Last name'
+      role: 'Role'
+      password: 'Password'
+      current_password: 'Current password'
+      password_confirmation: 'Password confirmation'
+    header:
+      id: 'ID'
+      uid: 'UID'
+      first_name: 'First name'
+      last_name: 'Last name'
+      email: 'Email'
+      role: 'Role'
+      actions: 'Actions'
+  comment:
+    button:
+      destroy: 'Delete comment'
+      edit: 'Edit comment'
+      new: 'Add comment'
+      reload: 'Reload'
+    fields:
+      content: 'Content'
+    header: 'Comments'
+    popup:
+      error:
+        delete: 'Error occurred during comment deletion. Please try again.'
+        update: 'Comment was not updated. Please try again.'
+        create: 'Comment was not created. Please try again.'
+      title:
+        edit: 'Edit comment'
+        new: 'New comment'
+    error:
+      load: 'Error occurred while loading comments'
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "User email can't be blank"

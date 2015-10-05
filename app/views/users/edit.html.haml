@@ -1,9 +1,10 @@
 .well
   = simple_form_for user, url: user_path(user.uid) do |f|
     .form-group
-      = f.input :email, as: :email, required: true, input_html: { class: 'form-control' }
+      = f.input :email, as: :email, label: t('user.fields.email'), required: true, input_html: { class: 'form-control', maxlength: 255 }
     .form-group
-      = f.input :first_name, input_html: { class: 'form-control' }
+      = f.input :first_name, label: t('user.fields.first_name'), input_html: { class: 'form-control', maxlength: 255 }
     .form-group
-      = f.input :last_name, input_html: { class: 'form-control' }
-    = f.submit 'Update', class: 'btn btn-warning'
+      = f.input :last_name, label: t('user.fields.last_name'), input_html: { class: 'form-control', maxlength: 255 }
+    = link_to t('common.cancel'), users_path, class: 'btn btn-info'
+    = f.submit t('common.update'), class: 'btn btn-warning'

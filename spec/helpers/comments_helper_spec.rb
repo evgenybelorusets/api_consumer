@@ -16,7 +16,8 @@ RSpec.describe CommentsHelper do
         'path',
         method: :delete,
         class: 'btn btn-danger delete-comment',
-        remote: true).and_return 'link'
+        remote: true,
+        data: { confirm: 'Are you sure?', confirm_title: 'Delete' }).and_return 'link'
       expect(helper.destroy_comment_link(comment)).to eql 'link'
     end
 

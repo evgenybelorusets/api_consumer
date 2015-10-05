@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def destroy
     user.destroy
-    render :index
+    redirect_to users_url
   end
 
   def update

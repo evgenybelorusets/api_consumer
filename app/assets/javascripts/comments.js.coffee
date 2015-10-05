@@ -5,8 +5,7 @@ class Comments
     @loadComments()
 
   displayErrorMessage: ->
-    $('#spinner-container').
-      html('Error occurred while loading comments <button class="reload-comments btn btn-info">Reload</button>')
+    $('#spinner-container').html($('#comments-load-error').html())
 
   initializeListeners: ->
     @comments.delegate '.reload-comments', 'click', (event)=>
@@ -17,17 +16,17 @@ class Comments
       $(event.target).closest('.comment-content').remove()
 
     @comments.delegate '.delete-comment', 'ajax:error', (event)->
-      title = "Warning"
-      body = "Error occurred during comment deletion. Please try again."
+      title = I18n.t('common.warning')
+      body = I18n.t('comment.popup.error.delete')
       Modal.show(title, body)
 
     @comments.delegate '.edit-comment', 'ajax:success', (event, data)->
-      title = 'Edit comment'
+      title = I18n.t('comment.popup.title.edit')
       body = data
       Modal.show(title, body)
 
     $('#post').delegate '.new-comment', 'ajax:success', (event, data)->
-      title = 'New comment'
+      title = I18n.t('comment.popup.title.new')
       body = data
       Modal.show(title, body)
 
@@ -40,8 +39,8 @@ class Comments
 
     Modal.delegate '.edit-comment-form', 'ajax:error', (event)=>
       Modal.close()
-      title = "Warning"
-      body = "Comment was not updated. Please try again."
+      title = I18n.t('common.warning')
+      body = I18n.t('comment.popup.error.update')
       Modal.show(title, body)
 
     Modal.delegate '.new-comment-form', 'ajax:success', (event, data)=>
@@ -51,8 +50,8 @@ class Comments
 
     Modal.delegate '.new-comment-form', 'ajax:error', (event)=>
       Modal.close()
-      title = "Warning"
-      body = "Comment was not created. Please try again."
+      title = I18n.t('common.warning')
+      body = I18n.t('comment.popup.error.create')
       Modal.show(title, body)
 
   loadComments: ->

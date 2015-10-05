@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
   def destroy
     post.destroy
-    render :index
+    redirect_to posts_url
   end
 
   protected

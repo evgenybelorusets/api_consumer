@@ -8,6 +8,6 @@
 
 * Configuration: check database.yml.example and settings.yml.example
 
-* Database creation and seeds: bundle exec API_KEY='key' API_PASSWORD='password' rake db:setup. Key and password obtained through registration in api_provider app.
+* Database creation and seeds: API_USER='user' API_PASSWORD='password' bundle exec rake db:setup. User and password obtained through registration in api_provider app.
 
 * Specs: bundle exec rspec spec/

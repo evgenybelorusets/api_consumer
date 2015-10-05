@@ -15,4 +15,7 @@
 //= require twitter/bootstrap
 //= require modal
 //= require comments
+//= require i18n
+//= require i18n/translations
+//= require twitter/bootstrap/rails/confirm
 //= require_tree .

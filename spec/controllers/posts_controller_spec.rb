@@ -25,7 +25,7 @@ RSpec.describe PostsController do
     it 'should destroy post and render index' do
       expect(pst).to receive(:destroy)
       delete :destroy, id: 1
-      expect(subject).to render_template('index')
+      expect(response).to redirect_to('http://test.host/posts')
     end
   end
 

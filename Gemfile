@@ -18,6 +18,8 @@ gem 'simple_form'
 gem "config"
 gem "activeresource-response"
 gem 'kaminari'
+gem "i18n-js"
+gem 'twitter-bootstrap-rails-confirm'
 
 group :development, :test do
   gem 'byebug'

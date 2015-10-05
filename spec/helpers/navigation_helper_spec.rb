@@ -70,14 +70,14 @@ describe NavigationHelper do
       allow(helper).to receive(:signed_in?).and_return true
       allow(helper).to receive(:destroy_user_session_path).and_return 'path'
       allow(helper).to receive(:link_to).
-        with('Sign Out', 'path', class: 'btn nav-btn', method: :delete).and_return 'link'
+        with('Sign out', 'path', class: 'btn nav-btn', method: :delete).and_return 'link'
       expect(helper.nav_sign_in_or_out_link).to eql 'link'
     end
 
     it 'should return sign in link if users is signed out' do
       allow(helper).to receive(:signed_in?).and_return false
       allow(helper).to receive(:user_session_path).and_return 'path'
-      allow(helper).to receive(:link_to).with('Sign In', 'path', class: 'btn nav-btn').and_return 'link'
+      allow(helper).to receive(:link_to).with('Sign in', 'path', class: 'btn nav-btn').and_return 'link'
       expect(helper.nav_sign_in_or_out_link).to eql 'link'
     end
   end

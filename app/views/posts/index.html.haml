@@ -4,9 +4,9 @@
 .well
   %table.table
     %thead
-      %td= 'Autor'
-      %td= 'Title'
-      %td= 'Actions'
+      %td= t('post.header.author')
+      %td= t('post.header.title')
+      %td= t('post.header.actions')
     - posts.each do |post|
       %tr
         %td= post.full_name

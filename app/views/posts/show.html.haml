@@ -12,3 +12,9 @@
 #comments{ data: { comments_url: post_comments_path(post) } }
   #spinner-container
     .large.spinner
+
+#comments-load-error
+  %span
+    = t('comment.error.load')
+    %button.reload-comments.btn.btn-info
+      = t('comment.button.reload')

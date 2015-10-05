@@ -25,7 +25,7 @@ RSpec.describe UsersController do
     it 'should destroy user and render index' do
       expect(user).to receive(:destroy)
       delete :destroy, id: 'uid'
-      expect(subject).to render_template('index')
+      expect(response).to redirect_to('http://test.host/users')
     end
   end
 
