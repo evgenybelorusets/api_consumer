@@ -2,24 +2,24 @@ require 'spec_helper'
 
 RSpec.describe User do
   context 'read only attributes' do
-    its('class.readonly_attributes') { should include 'uid' }
+    it { expect(described_class._attr_readonly).to include 'uid' }
   end
 
   context 'delegated methods' do
-    it { should respond_to(:first_name) }
-    it { should respond_to(:last_name) }
-    it { should respond_to(:role) }
-    it { should respond_to(:first_name=) }
-    it { should respond_to(:last_name=) }
-    it { should respond_to(:role=) }
-    it { should respond_to(:external_user_id) }
+    it { expect(subject).to respond_to(:first_name) }
+    it { expect(subject).to respond_to(:last_name) }
+    it { expect(subject).to respond_to(:role) }
+    it { expect(subject).to respond_to(:first_name=) }
+    it { expect(subject).to respond_to(:last_name=) }
+    it { expect(subject).to respond_to(:role=) }
+    it { expect(subject).to respond_to(:external_user_id) }
   end
 
-  it_should_behave_like 'roles', 'user'
-  it_should_behave_like 'roles', 'admin'
+  it_behaves_like 'roles', 'user'
+  it_behaves_like 'roles', 'admin'
 
-  it_should_behave_like 'external fields', 'email'
-  it_should_behave_like 'external fields', 'uid'
+  it_behaves_like 'external fields', 'email'
+  it_behaves_like 'external fields', 'uid'
 
   context 'callbacks', slow: true do
     let(:user) { build :user }

@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe ApplicationController do
   context 'filters' do
-    it { should use_before_filter :authenticate_user! }
-    it { should use_before_filter :configure_permitted_parameters }
-    it { should use_before_filter :set_user_uid }
+    it { expect(subject).to use_before_filter :authenticate_user! }
+    it { expect(subject).to use_before_filter :configure_permitted_parameters }
+    it { expect(subject).to use_before_filter :set_user_uid }
   end
 
   describe '#set_user_uid' do
