@@ -2,8 +2,6 @@ require 'rubygems'
 require 'active_resource'
 
 class BaseResource < ActiveResource::Base
-  FULL_NAME_TEMPLATE = '%{first_name} %{last_name} <%{email}>'
-
   self.site = Settings.api.site
   self.user = ENV['API_USER']
   self.password = ENV['API_PASSWORD']
@@ -30,9 +28,5 @@ class BaseResource < ActiveResource::Base
 
   def update_attributes(options)
     super(options.merge(user_uid: BaseResource.user_uid))
-  end
-
-  def full_name
-    FULL_NAME_TEMPLATE % { first_name: first_name, last_name: last_name, email: email }
   end
 end

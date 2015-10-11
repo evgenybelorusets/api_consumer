@@ -7,7 +7,7 @@
     = edit_post_link(post)
     = destroy_post_link(post)
     %span.author
-      = post.full_name
+      = post.author_full_name_with_email
 
 #comments{ data: { comments_url: post_comments_path(post) } }
   #spinner-container

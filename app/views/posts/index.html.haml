@@ -9,7 +9,7 @@
       %td= t('post.header.actions')
     - posts.each do |post|
       %tr
-        %td= post.full_name
+        %td= post.author_full_name_with_email
         %td= truncate(post.title, length: 50)
         %td
           = post_link(post)

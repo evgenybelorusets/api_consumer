@@ -1,4 +1,6 @@
 class Post < BaseResource
+  include Concerns::Authorship
+
   add_response_method :http_response
 
   schema do

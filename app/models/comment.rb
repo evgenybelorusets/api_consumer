@@ -1,4 +1,6 @@
 class Comment < BaseResource
+  include Concerns::Authorship
+
   self.site = "#{self.site}/posts/:post_id"
 
   schema do
