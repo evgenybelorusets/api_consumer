@@ -6,6 +6,8 @@ class BaseResource < ActiveResource::Base
   self.user = ENV['API_USER']
   self.password = ENV['API_PASSWORD']
 
+  before_save :set_user_uid_prefix
+
   class << self
     def find(scope, options = {})
       super(scope, options.deep_merge(params: { user_uid: user_uid }))
@@ -20,13 +22,9 @@ class BaseResource < ActiveResource::Base
     end
   end
 
-  def initialize(*args)
-    super.tap do |resource|
-      resource.prefix_options[:user_uid] = BaseResource.user_uid
-    end
-  end
+  protected
 
-  def update_attributes(options)
-    super(options.merge(user_uid: BaseResource.user_uid))
+  def set_user_uid_prefix
+    self.prefix_options[:user_uid] = BaseResource.user_uid
   end
 end
