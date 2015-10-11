@@ -140,6 +140,7 @@ RSpec.describe User do
     let(:scope_without_matches) { double :score_without_matches, exists?: false }
 
     before :each do
+      allow(subject).to receive(:guest?).and_return false
       allow(subject).to receive(:external_user).and_return external_user
       allow(User).to receive(:where).and_return scope_without_matches
       allow(subject).to receive(:uid=)

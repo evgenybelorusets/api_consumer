@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   EXTERNAL_USER_KEY_TEMPLATE = 'external_user_%{id}'
-  EXTERNAL_FIELDS = [ :uid, :email ]
   ROLES = {
     admin: 'admin',
     user: 'user',
@@ -24,26 +23,32 @@ class User < ActiveRecord::Base
 
   paginates_per 10
 
+  scope :guest, ->{ where(role: ROLES[:guest]) }
 
-  class << self
-    def guest
-      User.new uid: GUEST_UID, role: ROLES[:guest]
-    end
+  def guest?
+    self.role == ROLES[:guest]
   end
 
-  ROLE_VALUES.each do |role|
-    define_method("#{role}?") do
-      self.role == role
-    end
+  def user?
+    self.role == ROLES[:user]
   end
 
-  EXTERNAL_FIELDS.each do |field|
-    method_name = "#{field}="
+  def admin?
+    self.role == ROLES[:admin]
+  end
 
-    define_method(method_name) do |value|
-      external_user.public_send(method_name, value)
-      self[field] = value
-    end
+  def uid
+    guest? ? GUEST_UID : self[:uid]
+  end
+
+  def uid=(value)
+    external_user.uid = value
+    self[:uid] = value
+  end
+
+  def email=(value)
+    external_user.email = value
+    self[:email] = value
   end
 
   private

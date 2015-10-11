@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= super || User.guest
+    @current_user ||= super || User.guest.new
   end
 
   def log_exception(exception)
