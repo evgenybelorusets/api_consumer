@@ -2,9 +2,10 @@ RSpec.shared_examples 'external fields' do |name|
   method_name = "#{name}="
 
   describe "##{method_name}" do
-    let(:external_user) { double :external_user, guest?: false }
+    let(:external_user) { double :external_user }
 
     before :each do
+      allow(subject).to receive(:uid).and_return 'value'
       allow(subject).to receive(:external_user).and_return external_user
     end
 
