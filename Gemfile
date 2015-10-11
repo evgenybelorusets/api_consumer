@@ -23,6 +23,7 @@ gem 'twitter-bootstrap-rails-confirm'
 
 group :development, :test do
   gem 'byebug'
+  gem 'dotenv-rails'
 end
 
 group :test do

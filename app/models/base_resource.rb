@@ -5,8 +5,8 @@ class BaseResource < ActiveResource::Base
   FULL_NAME_TEMPLATE = '%{first_name} %{last_name} <%{email}>'
 
   self.site = Settings.api.site
-  self.user = Settings.api.user
-  self.password = Settings.api.password
+  self.user = ENV['API_USER']
+  self.password = ENV['API_PASSWORD']
 
   class << self
     def find(scope, options = {})

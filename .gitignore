@@ -17,6 +17,7 @@
 /tmp
 /config/database.yml
 /config/settings.yml
+/.env
 /.idea
 
 /db/test*
