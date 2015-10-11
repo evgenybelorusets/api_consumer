@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def user
-    @user ||= User.find_by_uid(params[:id])
+    @user ||= User.find_by(uid: params[:id])
   end
   helper_method :user
 

@@ -98,7 +98,7 @@ RSpec.describe UsersController do
   describe '#user' do
     it 'should find user by uid' do
       allow(subject).to receive(:params).and_return(id: 'uid')
-      allow(User).to receive(:find_by_uid).with('uid').once.and_return user
+      allow(User).to receive(:find_by).with(uid: 'uid').once.and_return user
       expect(subject.send :user).to eql user
       expect(subject.send :user).to eql user
     end
