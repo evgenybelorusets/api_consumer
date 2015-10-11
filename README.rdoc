@@ -4,8 +4,6 @@
 
 * Ruby version >= 2.1.6
 
-* System dependencies: mysql
-
 * Configuration: check database.yml.example and settings.yml.example
 
 * Database creation and seeds: API_USER='user' API_PASSWORD='password' bundle exec rake db:setup. User and password obtained through registration in api_provider app.
